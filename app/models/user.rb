@@ -7,7 +7,7 @@ class User < ApplicationRecord
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ } do
     validates :first_name
     validates :last_name
-    validates :nickname
+    
   end
 
   with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/ } do
@@ -30,4 +30,5 @@ class User < ApplicationRecord
   validates :email, format: { with: VALID_EMAIL_REGEX }, allow_blank: true
   validates :email, presence: true
   validates :birth_date, presence: true
+  validates :nickname, presence: true
 end

@@ -67,3 +67,5 @@ gem 'pry-rails'
 gem 'devise'
 
 gem 'sqlite3', '~> 1.3.6'
+
+gem 'rails-i18n'
