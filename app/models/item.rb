@@ -17,10 +17,10 @@ class Item < ApplicationRecord
     validates :price, format: { with: /\A[0-9]+\z/, message: 'out of setting range' }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'half-width number' }
   end
   with_options numericality: { other_than: 1, message: 'id Select' } do
-    validates :category_id
-    validates :condition_id
-    validates :postage_payer_id
-    validates :prefecture_id
-    validates :handling_time_id
+    validates :category_id, format: { with: /\A[0-9]+\z/}
+    validates :condition_id, format: { with: /\A[0-9]+\z/}
+    validates :postage_payer_id, format: { with: /\A[0-9]+\z/}
+    validates :prefecture_id, format: { with: /\A[0-9]+\z/}
+    validates :handling_time_id, format: { with: /\A[0-9]+\z/}
   end
 end

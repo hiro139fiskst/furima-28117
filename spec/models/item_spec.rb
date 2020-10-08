@@ -27,28 +27,28 @@ require 'rails_helper'
               @item.valid?
               expect(@item.errors.full_messages).to include("Name can't be blank")
           end
-          it "カテゴリーの情報が0だと登録できない" do
-            @item.category_id = []
+          it "カテゴリーの情報が1だと登録できない" do
+            @item.category_id = 1
             @item.valid?
             expect(@item.errors.full_messages).to include("Category id Select")
           end
-          it "商品の状態が0だと登録できない" do
-            @item.condition_id = []
+          it "商品の状態が1だと登録できない" do
+            @item.condition_id = 1
             @item.valid?
             expect(@item.errors.full_messages).to include("Condition id Select")
           end
-          it "配送料の負担が0だと登録できない" do
-            @item.postage_payer_id = []
+          it "配送料の負担が1だと登録できない" do
+            @item.postage_payer_id = 1
             @item.valid?
             expect(@item.errors.full_messages).to include("Postage payer id Select")
           end
-          it "発送元の地域が0だと登録できない" do
-            @item.prefecture_id = []
+          it "発送元の地域が1だと登録できない" do
+            @item.prefecture_id = 1
             @item.valid?
             expect(@item.errors.full_messages).to include("Prefecture id Select")
           end
-          it "発送までの日数が0だと登録できない" do
-            @item.handling_time_id = []
+          it "発送までの日数が1だと登録できない" do
+            @item.handling_time_id = 1
             @item.valid?
             expect(@item.errors.full_messages).to include("Handling time id Select")
           end
