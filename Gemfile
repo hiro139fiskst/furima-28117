@@ -69,3 +69,9 @@ gem 'devise'
 gem 'sqlite3', '~> 1.3.6'
 
 gem 'rails-i18n'
+
+gem 'active_hash'
+
+gem 'mini_magick'
+
+gem 'jquery-rails'
