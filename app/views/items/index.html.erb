@@ -125,6 +125,7 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
     <ul class='item-lists'>
+
         <%if @items.present?%>
           <% @items.each do |item| %>
           <li class ='list'>
@@ -135,8 +136,11 @@
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <div class='sold-out'>
-            <span>Sold Out!!</span>
+          <% if item.purchase.present? %>
+          <div class='sold-out'>
+            <span><%= "Sold Out!!" %></span>
           </div>
+          <%end%>
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
