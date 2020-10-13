@@ -6,15 +6,7 @@ class PurchasesController < ApplicationController
 
   require 'payjp'
 
-def item_find
-  @item = Item.find(params[:item_id])
-end
 
-  def topindex
-    if current_user.id == @item.user_id
-      redirect_to root_path
-    end
-  end
 
   def index
 
@@ -54,3 +46,13 @@ end
     redirect_to root_path if @item.purchase.present?
   end
 end
+
+def item_find
+  @item = Item.find(params[:item_id])
+end
+
+  def topindex
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end
