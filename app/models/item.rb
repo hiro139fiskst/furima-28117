@@ -11,11 +11,13 @@ class Item < ApplicationRecord
   has_one :purchase
 
   with_options presence: true do
-    validates :name
+    validates :name, length: { maximum: 40, message: 'is too long' }
     validates :image
-    validates :description
-    validates :price, format: { with: /\A[0-9]+\z/, message: 'out of setting range' }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'half-width number' }
+    validates :description, length: { maximum: 1000, message: 'is too long' }
+    validates :price, numericality: { with: /\A[0-9]+\z/, message: 'は半角で入力してください。' },
+                      inclusion: { in: 300..9_999_999, message: 'Out of setting range' }
   end
+
   with_options numericality: { other_than: 1, message: 'id Select' } do
     validates :category_id
     validates :condition_id

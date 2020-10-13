@@ -24,4 +24,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :birth_date, presence: true
   validates :nickname, presence: true
+
+  has_many :items
+  has_many :purchases
 end
