@@ -1,8 +1,11 @@
 class ItemsController < ApplicationController
   # skip_before_action :authenticate_user!  ,only: [:show, :index]
-  # before_action :set_item, only: [:show ,:edit, :update, :destroy]
   before_action :item_set, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show]
+
+
+
+
 
   def move_to_index
     redirect_to new_user_session_path unless user_signed_in?

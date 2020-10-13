@@ -1,16 +1,28 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :sold_out, only: [:index, :create]
+  before_action :topindex
+  before_action :item_find, only: [:index, :create, :pay_item]
 
   require 'payjp'
 
+def item_find
+  @item = Item.find(params[:item_id])
+end
+
+  def topindex
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end
+
   def index
-    @item = Item.find(params[:item_id])
+
     @item_purchase = ItemPurchase.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
+
     @item_purchase = ItemPurchase.new(order_params)
     if @item_purchase.valid?
       pay_item
@@ -28,7 +40,7 @@ class PurchasesController < ApplicationController
   end
 
   def pay_item
-    @item = Item.find(params[:item_id])
+ 
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
