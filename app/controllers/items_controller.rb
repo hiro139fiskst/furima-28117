@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   # skip_before_action :authenticate_user!  ,only: [:show, :index]
-  before_action :item_set, only: [:edit, :show]
+  before_action :item_set, only: [:edit, :show, :update]
   before_action :move_to_index, except: [:index, :show]
 
 
@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      render :show
+        redirect_to item_path
     else
       render :edit
     end
@@ -59,4 +59,5 @@ class ItemsController < ApplicationController
   def item_set
     @item = Item.find(params[:id])
   end
+
 end
