@@ -39,8 +39,10 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
-      render :show
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+      if @item.save
+        redirect_to item_path
     else
       render :edit
     end
@@ -59,4 +61,5 @@ class ItemsController < ApplicationController
   def item_set
     @item = Item.find(params[:id])
   end
+
 end
