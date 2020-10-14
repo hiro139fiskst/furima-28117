@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   # skip_before_action :authenticate_user!  ,only: [:show, :index]
-  before_action :item_set, only: [:edit, :show, :update]
+  before_action :item_set, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, except: [:index, :show]
 
 
@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to root_path
     else
-      render show
+      render :edit
     end
   end
 
