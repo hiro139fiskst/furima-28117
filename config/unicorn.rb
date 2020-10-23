@@ -11,7 +11,7 @@ working_directory "#{app_path}/current"  # 「current」を指定
 pid "#{app_path}/shared/tmp/pids/unicorn.pid"  # 「shared」の中を参照するよう変更
 
 #ポート番号を指定
-listen "#{app_path}/shared/tmp/sockets/unicorn.sock"  # 「shared」の中を参照するよう変更
+listen "#{app_path}/tmp/sockets/unicorn.sock"
 
 #エラーのログを記録するファイルを指定
 stderr_path "#{app_path}/shared/log/unicorn.stderr.log"  # 「shared」の中を参照するよう変更
@@ -22,7 +22,7 @@ stdout_path "#{app_path}/shared/log/unicorn.stdout.log"  # 「shared」の中を
 #Railsアプリケーションの応答を待つ上限時間を設定
 timeout 60
 
-###以下は応用的な設定なので説明は割愛
+#以下は応用的な設定なので説明は割愛
 
 preload_app true
 GC.respond_to?(:copy_on_write_friendly=) && GC.copy_on_write_friendly = true
